@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+</style>
+<body>
+  <div class="topnav">
+    <a class="active" href="{{url_for('index')}}">Home</a>
+    <a href="{{url_for('submit')}}">Add New Member</a>
+  </div>
+      <br/>
+<h3>Edit Your Specifications:</h3>
+
+<div>
+  <form action="/update/{{result.id}}/" method = "POST">
+    <label for="name">First Name</label>
+    <input type="text" name="name" value="{{result.name}}">
+
+    <label for="lname">Last Name</label>
+    <input type="text" name="lname" value="{{result.lname}}">
+
+    <label for="email">Email</label>
+    <input type="text" name="email" value="{{result.email}}">
+
+    <label for="phone">Phone</label>
+    <input type="text" name="phone" value="{{result.phone}}">
+  
+    <input type="submit" value="Edit">
+  </form>
+</div>
+
+</body>
+</html>

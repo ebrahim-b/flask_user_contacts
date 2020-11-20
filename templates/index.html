@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  color: black;
+  background: orange;
+}
+.btn:hover {background: green;}
+
+</style>
+</head>
+<body>
+ 
+    
+    <div class="topnav">
+        <a class="active" href="{{url_for('index')}}">Home</a>
+        <a href="{{url_for('submit')}}">Add New Member</a>
+      </div>
+
+      <br/>
+      <h1>Library Members: </h1>
+<table id="customers">
+    
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Action</th>
+  </tr>
+
+
+  {% for r in result %}
+  <tr>
+    <td>{{r.id}}</td>
+    <td>{{r.name}}</td>
+    <td>{{r.lname}}</td>
+    <td>{{r.email}}</td>
+    <td>{{r.phone}}</td>
+    <td>
+      <a href="/show_update/{{r.id}}" class="btn default" >Edit</a>
+      <a href="/delete/{{r.id}}" class="btn default" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+    </td>
+    
+  </tr>
+  {% endfor %}
+  
+</table>
+
+</body>
+</html>
